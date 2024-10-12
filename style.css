@@ -1,0 +1,25 @@
+.row{
+    display: flex;
+    flex-wrap: nowrap;
+    /* border: 1px solid red; */
+    justify-content: center;
+}
+.calc{
+    margin: auto;
+    width: 200px;
+    border: 2px solid black;
+}
+button{
+    width: 50px;
+    height: 50px;
+}
+.display,button{
+    border-radius: 0;
+    font-size: 20px;
+}
+
+.display{
+    border-bottom: 1px solid grey;
+    padding: 15px 0;
+    justify-content: right;
+}
