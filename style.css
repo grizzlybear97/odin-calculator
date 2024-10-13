@@ -1,9 +1,21 @@
+h1{
+    text-align: center;
+}
 .row{
     display: flex;
     flex-wrap: nowrap;
     /* border: 1px solid red; */
     justify-content: center;
 }
+.row > :nth-child(-n+3){
+    background-color: yellow;
+}
+.row :last-child,
+.fourth :first-child,
+.fourth :nth-child(3){
+    background-color: orange;
+}
+
 .calc{
     margin: auto;
     width: 200px;
