@@ -1,8 +1,8 @@
 //global variables
-let firstValue;
-let secondValue;
+let first;
+let second;
 let output;
-
+let numbers = [0,1,2,3,4,5,6,7,8,9]
 //math functions
 add = (a,b) => a+b;
 sub = (a,b) => a-b;
@@ -22,19 +22,40 @@ function operate(first,second,operater) {
     else if(operater == '/') return div(first,second);
 
 }
-console.log(operate(5,6,'*'))
 
+function clearInputs(){
+    first = undefined;
+    second = undefined;
+    operator = undefined;
+    
+}
 //function to store display info
 function display(){
     let buttons = document.querySelectorAll('button');
     const display = document.querySelector('.display');
     buttons = [...buttons];
     buttons.map(button => button.addEventListener('click', () => {
-        if(button.innerText == 'C') {
-            console.log('clear pressed');
+        if(numbers.includes(Number.parseInt(button.innerText)) ){
+            display.innerText += button.innerText;
+        }
+        else if(button.innerText == 'C') {
+            clearInputs();
             display.innerText = ''
-        }else display.innerText += button.innerText;
+        }else if(button.innerText == '+' || '-' || '*' || '/'){
+            if(!first) { 
+                first = Number.parseInt(display.innerText);
+                operator = button.innerText;
+                display.innerText = ''
+            }else if(!second) {
+                second = Number.parseInt(display.innerText);
+                display.innerText = operate(first,second,operator);
+                clearInputs();
+            }
+            
+        }else if(button.innerText == '='){
+            display.innerText = operate(first,second,operator);
+        } 
     }))
 }
 
-display();
+display(); 
