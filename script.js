@@ -16,11 +16,14 @@ let operator;
 
 //main 
 function operate(first,second,operater) {
-    if(operater == '+') return add(first,second);
-    else if(operater == '-') return sub(first,second);
-    else if(operater == '*') return mul(first,second);
-    else if(operater == '/') return div(first,second);
+    let ans
+    if(operater == '+') ans = add(first,second);
+    else if(operater == '-') ans = sub(first,second);
+    else if(operater == '*') ans = mul(first,second);
+    else if(operater == '/') ans = div(first,second);
 
+    if(!Number.isSafeInteger(ans)) return ans.toFixed(2);
+    return ans;
 }
 
 function clearInputs(){
@@ -37,12 +40,13 @@ function display(){
     buttons.map(button => button.addEventListener('click', () => {
         if(numbers.includes(Number.parseInt(button.innerText)) ){
             display.innerText += button.innerText;
-        }
-        else if(button.innerText == 'C') {
-            clearInputs();
-            display.innerText = ''
-        }else if(button.innerText == '+' || '-' || '*' || '/'){
-            if(!first) { 
+        } 
+        else if(button.innerText == '+' || '-' || '*' || '/' || 'C'){
+            if(button.innerText == 'C') {
+                clearInputs();
+                display.innerText = ''
+            }
+            else if(!first) { 
                 first = Number.parseInt(display.innerText);
                 operator = button.innerText;
                 display.innerText = ''
