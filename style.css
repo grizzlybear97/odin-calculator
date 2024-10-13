@@ -21,5 +21,6 @@ button{
 .display{
     border-bottom: 1px solid grey;
     padding: 15px 0;
+    height: 15px;
     justify-content: right;
 }
